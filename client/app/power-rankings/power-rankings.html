@@ -1,0 +1,32 @@
+<div class="col-md-12" ng-controller="PowerRankingsCtrl as prCtrl">
+   <div ng-if='!prCtrl.isLoading'>
+      <table style="width:100%" class="pr-table table table-bordered">
+         <thead>
+            <tr>
+               Power Rankings for Week {{prCtrl.period}}
+            </tr>
+            <tr class='pr-header'>
+               <th>Rank</th>
+               <th><a href="" ng-click="reverse=false;prCtrl.order('name', false)">Owner</a></th>
+               <th>Team</th>
+               <th><a href="" ng-click="reverse=!reverse;prCtrl.order('wins', reverse)">Record</a></th>
+               <th><a href="" ng-click="reverse=!reverse;prCtrl.order('pointsScored', reverse)">Points For</a></th>
+               <th><a href="" ng-click="reverse=!reverse;prCtrl.order('pointsAgainst', reverse)">Points Against</a></th>
+               <th>Change</th>
+            </tr>
+         </thead>
+         <tbody id="sortable-owners" sortable="prCtrl.sortableOptions" ng-model='prCtrl.owners'>
+            <tr ng-repeat="owner in prCtrl.owners | orderBy:predicate:reverse" sortable-item >
+               <td>{{$index + 1}}</td>
+               <td sortable-item-handle>{{owner.name}}</td>
+               <td sortable-item-handle>{{owner.team}}</td>
+               <td sortable-item-handle>{{owner.wins}} - {{owner.losses}} - {{owner.ties}}</td>
+               <td sortable-item-handle>{{owner.pointsScored}}</td>
+               <td sortable-item-handle>{{owner.pointsAgainst}}</td>
+               <td sortable-item-handle>{{owner.previousWeek}}</td>
+            </tr>
+         </tbody>
+      </table>
+      <button ng-click="prCtrl.submitRankings()">Submit</button>
+   </div>
+</div>
