@@ -5,11 +5,10 @@
 
 'use strict';
 
-var Thing = require('../api/thing/thing.model');
+var PowerRanking = require('../api/power_ranking/power_ranking.model');
 
-
-Thing.find({}).remove(function() {
-  Thing.create({
+PowerRanking.find({}).remove(function() {
+  PowerRanking.create({
     name : 'Development Tools',
     info : 'Integration with popular tools such as Bower, Grunt, Karma, Mocha, JSHint, Node Inspector, Livereload, Protractor, Jade, Stylus, Sass, CoffeeScript, and Less.'
   }, {

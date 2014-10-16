@@ -19,3 +19,17 @@ describe('GET /api/power_rankings', function() {
       });
   });
 });
+
+describe('submit rankings', function() {
+   
+   it('should only accept one submission per owner per period', function(done) {
+      
+   });
+
+   it('should return an good error when more than one submission per week is made', function(){});
+});
+
+describe('retrieve rankings', function() {
+   it('should be able to retrieve all rankings for a period', function(){});
+   it('should be able to retrieve all rankings for an owner', function(){});
+});
