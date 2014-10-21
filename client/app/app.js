@@ -2,7 +2,7 @@
 'use strict';
 
 angular.module('DoleacPowerRankings', 
-   ['ui.bootstrap', 'ui.utils', 'ui.router', 'ngAnimate', 'powerRankings', 'home', 'CBSSportsAPI']);
+   ['ui.bootstrap', 'ui.utils', 'ui.router', 'ngAnimate', 'home', 'CBSSportsAPI']);
 
 angular.module('DoleacPowerRankings').config(DoleacConfig);
 
@@ -15,7 +15,7 @@ function DoleacConfig($stateProvider, $urlRouterProvider) {
 
 function DoleacRun($rootScope, cbsAPI) {
 
-   cbsAPI.getLeagueInfo();
+   //cbsAPI.getLeagueInfo();
    $rootScope.safeApply = function(fn) {
       var phase = $rootScope.$$phase;
       if (phase === '$apply' || phase === '$digest') {

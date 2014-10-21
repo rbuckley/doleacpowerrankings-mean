@@ -9,8 +9,9 @@ function homeConfig($stateProvider) {
     /* Add New States Above */
 }
 
+
 function homeCtrl($scope) {
-      $scope.test="Home Page Time";
+   $scope.test="Home Page Time";
 }
 
 angular.module('home', ['ui.bootstrap','ui.utils','ui.router','ngAnimate']);

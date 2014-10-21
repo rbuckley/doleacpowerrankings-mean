@@ -15,9 +15,8 @@ function requiredProcessEnv(name) {
 var all = {
   env: process.env.NODE_ENV,
 
-  // Root path of server
+  // Root path of server ('doleacpowerrankings-mean')
   root: path.normalize(__dirname + '/../../..'),
-
   // Server port
   port: process.env.PORT || 9000,
 

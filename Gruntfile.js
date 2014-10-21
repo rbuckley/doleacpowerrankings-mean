@@ -57,15 +57,15 @@ module.exports = function (grunt) {
     watch: {
       injectJS: {
         files: [
-          '<%= yeoman.client %>/{app,components}/**/*.js',
-          '!<%= yeoman.client %>/{app,components}/**/*.spec.js',
-          '!<%= yeoman.client %>/{app,components}/**/*.mock.js',
+          '<%= yeoman.client %>/{app}/**/*.js',
+          '!<%= yeoman.client %>/{app}/**/*.spec.js',
+          '!<%= yeoman.client %>/{app}/**/*.mock.js',
           '!<%= yeoman.client %>/app/app.js'],
         tasks: ['injector:scripts']
       },
       injectCss: {
         files: [
-          '<%= yeoman.client %>/{app,components}/**/*.css'
+          '<%= yeoman.client %>/{app}/**/*.css'
         ],
         tasks: ['injector:css']
       },
@@ -75,14 +75,14 @@ module.exports = function (grunt) {
       },
       jsTest: {
         files: [
-          '<%= yeoman.client %>/{app,components}/**/*.spec.js',
-          '<%= yeoman.client %>/{app,components}/**/*.mock.js'
+          '<%= yeoman.client %>/{app}/**/*.spec.js',
+          '<%= yeoman.client %>/{app}/**/*.mock.js'
         ],
         tasks: ['newer:jshint:all', 'karma']
       },
       injectLess: {
         files: [
-          '<%= yeoman.client %>/{app,components}/**/*.less'],
+          '<%= yeoman.client %>/{app}/**/*.less'],
         tasks: ['injector:less']
       },
       less: {
@@ -218,7 +218,8 @@ module.exports = function (grunt) {
       }
     },
 
-    // Automatically inject Bower components into the app
+    // Automatically inject Bower components into the app 
+    // between <!-- bower:js --> and <!-- endbower-->
     wiredep: {
       target: {
         src: '<%= yeoman.client %>/index.html',
@@ -429,7 +430,7 @@ module.exports = function (grunt) {
     karma: {
       unit: {
         configFile: 'karma.conf.js',
-        singleRun: true
+        singleRun: false
       }
     },
 
@@ -561,7 +562,15 @@ module.exports = function (grunt) {
 
   grunt.registerTask('serve', function (target) {
     if (target === 'dist') {
-      return grunt.task.run(['build', 'env:all', 'env:prod', 'express:prod', 'wait', 'open', 'express-keepalive']);
+      return grunt.task.run([
+            'build',
+            'env:all',
+            'env:prod',
+            'express:prod',
+            'wait', 
+            'open',
+            'express-keepalive'
+      ]);
     }
 
     if (target === 'debug') {
